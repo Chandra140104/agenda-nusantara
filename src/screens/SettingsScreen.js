@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import CustomHeader from '../components/CustomHeader';
 import { resetDB } from '../database/database';
 
 export default function SettingsScreen({ navigation }) {
@@ -31,27 +32,47 @@ export default function SettingsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Akun</Text>
-        <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
-          <View style={styles.menuLeft}>
-            <Ionicons name="log-out-outline" size={24} color="#E74C3C" />
-            <Text style={[styles.menuText, { color: '#E74C3C' }]}>Logout</Text>
-          </View>
-            <Ionicons name="chevron-forward" size={20} color="#BDC3C7" />
-        </TouchableOpacity>
-      </View>
+      <CustomHeader 
+        title="Pengaturan" 
+        backgroundColor="#95A5A6" 
+        showBackButton={true} 
+      />
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Database</Text>
-        <TouchableOpacity style={styles.menuItem} onPress={handleResetDB}>
-          <View style={styles.menuLeft}>
-            <Ionicons name="trash-bin-outline" size={24} color="#E74C3C" />
-            <Text style={[styles.menuText, { color: '#E74C3C' }]}>Reset Semua Tugas</Text>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Akun</Text>
+          <TouchableOpacity style={styles.item} onPress={handleLogout}>
+            <View style={[styles.iconBox, { backgroundColor: '#FFEBEE' }]}>
+              <Ionicons name="log-out-outline" size={22} color="#E53935" />
+            </View>
+            <Text style={styles.itemText}>Keluar Akun</Text>
+            <Ionicons name="chevron-forward" size={20} color="#CBD5E0" />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Sistem</Text>
+          <TouchableOpacity style={styles.item} onPress={handleResetDB}>
+            <View style={[styles.iconBox, { backgroundColor: '#FFF3E0' }]}>
+              <Ionicons name="refresh-outline" size={22} color="#FB8C00" />
+            </View>
+            <Text style={styles.itemText}>Reset Database</Text>
+            <Ionicons name="chevron-forward" size={20} color="#CBD5E0" />
+          </TouchableOpacity>
+          
+          <View style={styles.item}>
+            <View style={[styles.iconBox, { backgroundColor: '#E3F2FD' }]}>
+              <Ionicons name="information-circle-outline" size={22} color="#1E88E5" />
+            </View>
+            <Text style={styles.itemText}>Versi Aplikasi</Text>
+            <Text style={styles.versionText}>1.0.0</Text>
           </View>
-            <Ionicons name="chevron-forward" size={20} color="#BDC3C7" />
-        </TouchableOpacity>
-      </View>
+        </View>
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Agenda Nusantara © 2026</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -59,38 +80,57 @@ export default function SettingsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#FFFFFF',
+  },
+  content: {
+    padding: 20,
   },
   section: {
-    marginTop: 20,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#EEEEEE',
+    marginBottom: 30,
   },
   sectionTitle: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#7F8C8D',
-    marginLeft: 15,
-    marginTop: 15,
-    marginBottom: 5,
+    fontWeight: 'bold',
+    color: '#A0AEC0',
+    marginBottom: 15,
+    marginLeft: 5,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
   },
-  menuItem: {
+  item: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    backgroundColor: 'white',
     padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#FAFAFA',
+    borderRadius: 16,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#EDF2F7',
   },
-  menuLeft: {
-    flexDirection: 'row',
+  iconBox: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  itemText: {
+    flex: 1,
+    fontSize: 16,
+    color: '#2D3748',
+    fontWeight: '600',
+  },
+  versionText: {
+    fontSize: 14,
+    color: '#A0AEC0',
+  },
+  footer: {
+    marginTop: 20,
     alignItems: 'center',
   },
-  menuText: {
-    fontSize: 16,
-    marginLeft: 15,
-    color: '#333',
+  footerText: {
+    fontSize: 12,
+    color: '#CBD5E0',
   },
 });

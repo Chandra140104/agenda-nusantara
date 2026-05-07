@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
+import CustomHeader from '../components/CustomHeader';
 import { getTasks, toggleTask, deleteTask as removeTask } from '../database/database';
+import styles from '../styles/DaftarTugasStyles';
 
-export default function TaskListScreen() {
+export default function DaftarTugasScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const isFocused = useIsFocused();
 
@@ -52,21 +54,22 @@ export default function TaskListScreen() {
 
   const renderItem = ({ item }) => {
     const isImportant = item.category === 'Penting';
-    const dateStr = new Date(item.due_date).toLocaleDateString('id-ID');
+    const d = new Date(item.due_date);
+    const dateStr = `${d.getDate().toString().padStart(2, '0')} ${['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'][d.getMonth()]} ${d.getFullYear()}`;
 
     return (
-      <View style={[styles.taskCard, item.is_completed && styles.taskCompleted]}>
+      <View style={[styles.taskCard, item.is_completed === 1 && styles.taskCompleted]}>
         <View style={styles.taskInfo}>
-          <Text style={[styles.taskTitle, item.is_completed && styles.textCompleted]}>
+          <Text style={[styles.taskTitle, item.is_completed === 1 && styles.textCompleted]}>
             {item.title}
           </Text>
           <Text style={styles.taskDesc} numberOfLines={2}>
-            {item.description}
+            {item.description || 'Tidak ada deskripsi'}
           </Text>
           <View style={styles.badgeContainer}>
-            <View style={[styles.badge, { backgroundColor: isImportant ? '#FFEAEA' : '#EAF4FC' }]}>
-              <Text style={[styles.badgeText, { color: isImportant ? '#E74C3C' : '#3498DB' }]}>
-                {item.category}
+            <View style={[styles.badge, { backgroundColor: isImportant ? '#FFEBEE' : '#E3F2FD' }]}>
+              <Text style={[styles.badgeText, { color: isImportant ? '#E53935' : '#1E88E5' }]}>
+                {item.category.toUpperCase()}
               </Text>
             </View>
             <Text style={styles.dateText}>{dateStr}</Text>
@@ -76,13 +79,13 @@ export default function TaskListScreen() {
         <View style={styles.actions}>
           <TouchableOpacity onPress={() => toggleComplete(item.id, item.is_completed)} style={styles.iconButton}>
             <Ionicons 
-              name={item.is_completed ? 'checkmark-circle' : 'ellipse-outline'} 
-              size={28} 
-              color={item.is_completed ? '#2ECC71' : '#BDC3C7'} 
+              name={item.is_completed === 1 ? 'checkmark-circle' : 'ellipse-outline'} 
+              size={30} 
+              color={item.is_completed === 1 ? '#27AE60' : '#CBD5E0'} 
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => deleteTask(item.id)} style={styles.iconButton}>
-            <Ionicons name="trash-outline" size={24} color="#E74C3C" />
+            <Ionicons name="trash-outline" size={24} color="#E53935" />
           </TouchableOpacity>
         </View>
       </View>
@@ -91,10 +94,17 @@ export default function TaskListScreen() {
 
   return (
     <View style={styles.container}>
+      <CustomHeader 
+        title="Daftar Tugas" 
+        backgroundColor="#27AE60" 
+        showBackButton={true} 
+      />
+
       {tasks.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Ionicons name="document-text-outline" size={60} color="#BDC3C7" />
-          <Text style={styles.emptyText}>Belum ada tugas.</Text>
+          <Ionicons name="document-text-outline" size={80} color="#E2E8F0" />
+          <Text style={styles.emptyText}>Belum Ada Tugas</Text>
+          <Text style={styles.emptySubtitle}>Ayo mulai produktif hari ini!</Text>
         </View>
       ) : (
         <FlatList
@@ -102,83 +112,9 @@ export default function TaskListScreen() {
           keyExtractor={(item) => item.id.toString()}
           renderItem={renderItem}
           contentContainerStyle={styles.listContainer}
+          showsVerticalScrollIndicator={false}
         />
       )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  listContainer: {
-    padding: 15,
-  },
-  taskCard: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 15,
-    marginBottom: 12,
-    flexDirection: 'row',
-    elevation: 2,
-  },
-  taskCompleted: {
-    opacity: 0.7,
-  },
-  taskInfo: {
-    flex: 1,
-    paddingRight: 10,
-  },
-  taskTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-  },
-  textCompleted: {
-    textDecorationLine: 'line-through',
-    color: '#7F8C8D',
-  },
-  taskDesc: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 10,
-  },
-  badgeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  badge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
-    marginRight: 10,
-  },
-  badgeText: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  dateText: {
-    fontSize: 12,
-    color: '#95A5A6',
-  },
-  actions: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  iconButton: {
-    padding: 5,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  emptyText: {
-    marginTop: 10,
-    fontSize: 16,
-    color: '#7F8C8D',
-  },
-});

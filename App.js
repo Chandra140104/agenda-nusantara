@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, Text } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import AppNavigator from './src/navigation/AppNavigator';
 import { initDB } from './src/database/database';
+import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
   const [isDbReady, setIsDbReady] = useState(false);

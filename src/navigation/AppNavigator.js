@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
-import AddImportantTaskScreen from '../screens/AddImportantTaskScreen';
-import AddRegularTaskScreen from '../screens/AddRegularTaskScreen';
-import TaskListScreen from '../screens/TaskListScreen';
+import TambahTugasPentingScreen from '../screens/TambahTugasPentingScreen';
+import TambahTugasBiasaScreen from '../screens/TambahTugasBiasaScreen';
+import DaftarTugasScreen from '../screens/DaftarTugasScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
@@ -16,11 +16,11 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Agenda Nusantara', headerBackVisible: false }} />
-        <Stack.Screen name="AddImportantTask" component={AddImportantTaskScreen} options={{ title: 'Tambah Tugas Penting' }} />
-        <Stack.Screen name="AddRegularTask" component={AddRegularTaskScreen} options={{ title: 'Tambah Tugas Biasa' }} />
-        <Stack.Screen name="TaskList" component={TaskListScreen} options={{ title: 'Daftar Tugas' }} />
-        <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Pengaturan' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AddImportantTask" component={TambahTugasPentingScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AddRegularTask" component={TambahTugasBiasaScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="TaskList" component={DaftarTugasScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

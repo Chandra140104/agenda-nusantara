@@ -1,5 +1,10 @@
-import { dbState } from './storage';
+import { storage } from './storage';
 
-export const checkLogin = async (username, password) => {
-  return dbState.users.find(u => u.username === username && u.password === password);
-};
+class AuthService {
+  async checkLogin(username, password) {
+    const users = storage.getUsers();
+    return users.find(u => u.username === username && u.password === password);
+  }
+}
+
+export const authService = new AuthService();

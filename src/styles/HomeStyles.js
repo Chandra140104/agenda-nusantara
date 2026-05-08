@@ -31,7 +31,9 @@ export default StyleSheet.create({
     marginTop: 5,
   },
   gridContainer: {
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 0, // Setel ke 0 agar jarak murni dari margin chartCard
+    paddingBottom: 15,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
@@ -52,7 +54,7 @@ export default StyleSheet.create({
   iconContainer: {
     width: 60,
     height: 60,
-    borderRadius: 30,
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
@@ -62,5 +64,76 @@ export default StyleSheet.create({
     fontWeight: '600',
     color: '#333',
     textAlign: 'center',
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  statsCard: {
+    width: '48%',
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+  },
+  statsLabel: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#718096',
+    marginBottom: 5,
+  },
+  statsNumber: {
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+  chartCard: {
+    backgroundColor: 'white',
+    paddingVertical: 10, // Padding atas dan bawah 10px
+    paddingHorizontal: 20, // Padding kiri dan kanan tetap 20px
+    borderRadius: 16,
+    marginHorizontal: 20,
+    marginBottom: 20, // Setel ke 20 agar sama dengan jarak stats ke chart
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+  },
+  chartTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#718096',
+    marginBottom: 20, // Kembalikan ke 20 agar grafik bergeser ke bawah
+  },
+  chartContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end', // Ini penting agar grafik tumbuh ke atas
+    height: 75, // Kurangi tinggi area grafik agar total tinggi box 150px
+  },
+  barWrapper: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  bar: {
+    width: 25,
+    backgroundColor: '#0066CC', // Warna biru sesuai permintaan
+    borderRadius: 4,
+  },
+  barLabel: {
+    marginTop: 8,
+    fontSize: 12,
+    color: '#A0AEC0',
+    fontWeight: '600',
   },
 });

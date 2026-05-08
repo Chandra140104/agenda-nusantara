@@ -63,7 +63,7 @@ export default StyleSheet.create({
     color: '#2D3748',
   },
   textArea: {
-    height: 120,
+    height: 75,
     textAlignVertical: 'top',
   },
   saveButton: {

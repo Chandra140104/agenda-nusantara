@@ -49,7 +49,7 @@ export default function TambahTugasBiasaScreen({ navigation }) {
     <View style={styles.container}>
       <CustomHeader 
         title="Tambah Tugas Biasa" 
-        backgroundColor="#2980B9" 
+        backgroundColor="#4fa156" 
         showBackButton={true} 
       />
 

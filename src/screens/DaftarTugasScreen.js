@@ -55,38 +55,40 @@ export default function DaftarTugasScreen({ navigation }) {
   const renderItem = ({ item }) => {
     const isImportant = item.category === 'Penting';
     const d = new Date(item.due_date);
-    const dateStr = `${d.getDate().toString().padStart(2, '0')} ${['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'][d.getMonth()]} ${d.getFullYear()}`;
+    const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    const dateStr = `${d.getDate().toString().padStart(2, '0')} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
 
     return (
       <View style={[styles.taskCard, item.is_completed === 1 && styles.taskCompleted]}>
+        {/* Checkbox di sebelah kiri */}
+        <TouchableOpacity 
+          onPress={() => toggleComplete(item.id, item.is_completed)} 
+          style={styles.checkboxContainer}
+        >
+          <Ionicons 
+            name={item.is_completed === 1 ? 'checkbox' : 'square-outline'} 
+            size={28} 
+            color={item.is_completed === 1 ? '#439286' : '#CBD5E0'} 
+          />
+        </TouchableOpacity>
+
+        {/* Informasi Tugas di tengah */}
         <View style={styles.taskInfo}>
           <Text style={[styles.taskTitle, item.is_completed === 1 && styles.textCompleted]}>
             {item.title}
           </Text>
-          <Text style={styles.taskDesc} numberOfLines={2}>
-            {item.description || 'Tidak ada deskripsi'}
+          <Text style={styles.taskSubtitle}>
+            {dateStr} · {item.category}
           </Text>
-          <View style={styles.badgeContainer}>
-            <View style={[styles.badge, { backgroundColor: isImportant ? '#FFEBEE' : '#E3F2FD' }]}>
-              <Text style={[styles.badgeText, { color: isImportant ? '#E53935' : '#1E88E5' }]}>
-                {item.category.toUpperCase()}
-              </Text>
-            </View>
-            <Text style={styles.dateText}>{dateStr}</Text>
-          </View>
         </View>
 
-        <View style={styles.actions}>
-          <TouchableOpacity onPress={() => toggleComplete(item.id, item.is_completed)} style={styles.iconButton}>
-            <Ionicons 
-              name={item.is_completed === 1 ? 'checkmark-circle' : 'ellipse-outline'} 
-              size={30} 
-              color={item.is_completed === 1 ? '#27AE60' : '#CBD5E0'} 
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => deleteTask(item.id)} style={styles.iconButton}>
-            <Ionicons name="trash-outline" size={24} color="#E53935" />
-          </TouchableOpacity>
+        {/* Ikon panah di sebelah kanan */}
+        <View style={styles.arrowContainer}>
+          <Ionicons 
+            name="play" 
+            size={20} 
+            color={isImportant ? '#E53935' : '#4fa156'} 
+          />
         </View>
       </View>
     );
@@ -96,7 +98,7 @@ export default function DaftarTugasScreen({ navigation }) {
     <View style={styles.container}>
       <CustomHeader 
         title="Daftar Tugas" 
-        backgroundColor="#27AE60" 
+        backgroundColor="#439286" 
         showBackButton={true} 
       />
 

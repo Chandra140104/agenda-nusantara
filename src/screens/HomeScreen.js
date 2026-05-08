@@ -7,9 +7,9 @@ import styles from '../styles/HomeStyles';
 export default function HomeScreen({ navigation }) {
   const menuItems = [
     { title: 'Tambah Tugas Penting', icon: 'alert-circle', route: 'AddImportantTask', color: '#E74C3C' },
-    { title: 'Tambah Tugas Biasa', icon: 'clipboard', route: 'AddRegularTask', color: '#3498DB' },
-    { title: 'Daftar Tugas', icon: 'list', route: 'TaskList', color: '#2ECC71' },
-    { title: 'Pengaturan', icon: 'settings', route: 'Settings', color: '#95A5A6' },
+    { title: 'Tambah Tugas Biasa', icon: 'clipboard', route: 'AddRegularTask', color: '#4fa156' },
+    { title: 'Daftar Tugas', icon: 'list', route: 'TaskList', color: '#439286' },
+    { title: 'Pengaturan', icon: 'settings', route: 'Settings', color: '#439286' },
   ];
 
   const currentDate = new Date().toLocaleDateString('id-ID', {

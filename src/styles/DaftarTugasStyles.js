@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F7FAFC', // Slightly grey background like in image
   },
   header: {
-    backgroundColor: '#27AE60',
+    backgroundColor: '#439286',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -29,26 +29,27 @@ export default StyleSheet.create({
   },
   taskCard: {
     backgroundColor: 'white',
-    borderRadius: 16,
+    borderRadius: 12,
     padding: 16,
-    marginBottom: 16,
+    marginBottom: 12,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#EDF2F7',
-    elevation: 3,
+    borderColor: '#E2E8F0',
+    elevation: 1, // Subtle shadow
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
-    shadowRadius: 10,
+    shadowRadius: 2,
   },
   taskCompleted: {
     backgroundColor: '#F7FAFC',
-    borderColor: '#E2E8F0',
+  },
+  checkboxContainer: {
+    marginRight: 15,
   },
   taskInfo: {
     flex: 1,
-    paddingRight: 12,
   },
   taskTitle: {
     fontSize: 16,
@@ -60,36 +61,14 @@ export default StyleSheet.create({
     textDecorationLine: 'line-through',
     color: '#A0AEC0',
   },
-  taskDesc: {
+  taskSubtitle: {
     fontSize: 14,
     color: '#718096',
-    marginBottom: 10,
   },
-  badgeContainer: {
-    flexDirection: 'row',
+  arrowContainer: {
+    marginLeft: 10,
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  badge: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-    marginRight: 10,
-  },
-  badgeText: {
-    fontSize: 11,
-    fontWeight: 'bold',
-  },
-  dateText: {
-    fontSize: 11,
-    color: '#A0AEC0',
-  },
-  actions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  iconButton: {
-    padding: 8,
-    marginLeft: 5,
   },
   emptyContainer: {
     flex: 1,

@@ -6,7 +6,7 @@ export default StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   header: {
-    backgroundColor: '#2980B9',
+    backgroundColor: '#4fa156',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -27,7 +27,7 @@ export default StyleSheet.create({
     padding: 25,
   },
   badge: {
-    backgroundColor: '#E3F2FD',
+    backgroundColor: '#E8F5E9',
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 8,
@@ -35,7 +35,7 @@ export default StyleSheet.create({
     marginBottom: 25,
   },
   badgeText: {
-    color: '#1E88E5',
+    color: '#4fa156',
     fontWeight: 'bold',
     fontSize: 12,
   },
@@ -63,11 +63,11 @@ export default StyleSheet.create({
     color: '#2D3748',
   },
   textArea: {
-    height: 120,
+    height: 75,
     textAlignVertical: 'top',
   },
   saveButton: {
-    backgroundColor: '#2980B9',
+    backgroundColor: '#4fa156',
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',

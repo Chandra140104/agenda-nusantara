@@ -34,7 +34,7 @@ export default function SettingsScreen({ navigation }) {
     <View style={styles.container}>
       <CustomHeader 
         title="Pengaturan" 
-        backgroundColor="#95A5A6" 
+        backgroundColor="#439286" 
         showBackButton={true} 
       />
 

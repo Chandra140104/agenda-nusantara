@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CustomHeader from '../components/CustomHeader';
-import { resetDB } from '../database/database';
+import { resetDB } from '../database';
 
 export default function SettingsScreen({ navigation }) {
   const handleLogout = () => {

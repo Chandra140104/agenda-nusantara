@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Keyboard, Image } from 'react-native';
-import { checkLogin } from '../database/database';
+import { checkLogin } from '../database';
 import styles from '../styles/LoginStyles';
 
 export default function LoginScreen({ navigation }) {

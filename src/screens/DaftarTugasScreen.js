@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import CustomHeader from '../components/CustomHeader';
-import { getTasks, toggleTask, deleteTask as removeTask } from '../database/database';
+import { getTasks, toggleTask, deleteTask as removeTask } from '../database';
 import styles from '../styles/DaftarTugasStyles';
 
 export default function DaftarTugasScreen({ navigation }) {

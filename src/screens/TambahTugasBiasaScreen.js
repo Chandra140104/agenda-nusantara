@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert, Platform, ScrollView } 
 import { Ionicons } from '@expo/vector-icons';
 import CustomHeader from '../components/CustomHeader';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { addTask } from '../database/database';
+import { addTask } from '../database';
 import styles from '../styles/TambahTugasBiasaStyles';
 
 export default function TambahTugasBiasaScreen({ navigation }) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { initDB } from './src/database/database';
+import { initDB } from './src/database';
 import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {

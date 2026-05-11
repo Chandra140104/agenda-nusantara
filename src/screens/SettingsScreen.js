@@ -1,16 +1,35 @@
 import { useState } from 'react';
 import { Alert, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import CustomHeader from '../components/CustomHeader';
+import { changePassword } from '../database';
 import styles from '../styles/SettingsStyles';
 
 export default function SettingsScreen({ navigation }) {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
-  const handleSavePassword = () => {
-    Alert.alert('Sukses', 'Password berhasil diubah!');
-    setCurrentPassword('');
-    setNewPassword('');
+  const handleSavePassword = async () => {
+    if (!currentPassword || !newPassword) {
+      Alert.alert('Error', 'Semua field harus diisi');
+      return;
+    }
+
+    try {
+      // Menggunakan username default 'user' karena aplikasi belum memiliki sistem multi-user/sesi
+      await changePassword('user', currentPassword, newPassword);
+      Alert.alert('Sukses', 'Password berhasil diubah!');
+      setCurrentPassword('');
+      setNewPassword('');
+    } catch (error) {
+      Alert.alert('Error', error.message || 'Gagal mengubah password');
+    }
+  };
+
+  const handleLogout = () => {
+    Alert.alert('Logout', 'Apakah Anda yakin ingin keluar?', [
+      { text: 'Batal', style: 'cancel' },
+      { text: 'Keluar', style: 'destructive', onPress: () => navigation.replace('Login') }
+    ]);
   };
 
   return (
@@ -69,6 +88,11 @@ export default function SettingsScreen({ navigation }) {
             </View>
           </View>
         </View>
+
+        {/* Tombol Logout */}
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Text style={styles.logoutButtonText}>KELUAR AKUN</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

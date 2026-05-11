@@ -89,4 +89,30 @@ export default StyleSheet.create({
     color: '#CBD5E0',
     textAlign: 'center',
   },
+  expandedContent: {
+    marginTop: 10,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#EDF2F7',
+    width: '100%',
+  },
+  taskDescription: {
+    fontSize: 14,
+    color: '#4A5568',
+    marginBottom: 15,
+    lineHeight: 20,
+  },
+  deleteButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    alignSelf: 'flex-end',
+    padding: 5,
+  },
+  deleteText: {
+    color: '#E53935',
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginLeft: 5,
+  },
 });

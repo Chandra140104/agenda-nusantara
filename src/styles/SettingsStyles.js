@@ -99,4 +99,18 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     color: '#439286', // Warna hijau toska
   },
+  logoutButton: {
+    backgroundColor: '#E53935', // Warna merah untuk logout
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  logoutButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+  },
 });
